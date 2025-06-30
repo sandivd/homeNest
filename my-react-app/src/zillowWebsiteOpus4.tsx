@@ -29,7 +29,7 @@ const mockProperties: Property[] = [
     bathrooms: 2,
     sqft: 1200,
     imageUrl: "https://images.unsplash.com/photo-1664892798972-079f15663b16?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featured: true
+    featured: false
   },
   {
     id: 2,
@@ -100,6 +100,48 @@ const mockProperties: Property[] = [
     sqft: 1400,
     imageUrl: "https://plus.unsplash.com/premium_photo-1725408025985-4e2a24c03133?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: false
+  },
+  {
+    id: 7,
+    title: "Charming Boston Brownstone",
+    price: 980000,
+    address: "101 Beacon Street",
+    city: "Boston",
+    state: "MA",
+    type: "house",
+    bedrooms: 5,
+    bathrooms: 4,
+    sqft: 3100,
+    imageUrl: 'https://plus.unsplash.com/premium_photo-1694475477920-8064c7783ed9?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    featured: false
+  },
+  {
+  id: 8,
+  title: "Historic Victorian Mansion",
+  price: 1850000,
+  address: "240 Grand Avenue",
+  city: "Savannah",
+  state: "GA",
+  type: "house",
+  bedrooms: 6,
+  bathrooms: 5,
+  sqft: 4500,
+  imageUrl: 'https://images.unsplash.com/photo-1698852880899-60633378ff6f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  featured: false
+  },
+  {
+  id: 9,
+  title: "Stunning Beachfront Villa",
+  price: 3200000,
+  address: "55 Pacific Coast Highway",
+  city: "Malibu",
+  state: "CA",
+  type: "house",
+  bedrooms: 5,
+  bathrooms: 6,
+  sqft: 5200,
+  imageUrl: 'https://plus.unsplash.com/premium_photo-1661913412680-c274b6fea096?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  featured: true
   }
 ];
 
@@ -192,7 +234,7 @@ export default function RealEstateListings() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Home className="h-8 w-8 text-blue-600 mr-3" />
-              <h1 className="text-2xl font-bold text-gray-900">DreamHome</h1>
+              <h1 className="text-2xl font-bold text-gray-900">HomeNest Realty</h1>
             </div>
             <nav className="hidden md:flex space-x-8">
               <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Buy</a>
@@ -327,7 +369,7 @@ export default function RealEstateListings() {
             <div>
               <div className="flex items-center mb-4">
                 <Home className="h-8 w-8 text-blue-400 mr-3" />
-                <h3 className="text-xl font-bold">DreamHome</h3>
+                <h3 className="text-xl font-bold">HomeNest Realty</h3>
               </div>
               <p className="text-gray-400">Your trusted partner in finding the perfect home.</p>
             </div>
