@@ -2,7 +2,6 @@
 
 DreamHome is a modern, responsive web application for browsing real estate listings. It was built to demonstrate a clean user interface using React, TypeScript, and Tailwind CSS. The application features dynamic search, filtering capabilities, and a "favorites" system.
 
-*(Feel free to replace this with your own screenshot!)*
 
 ## Features
 
@@ -94,3 +93,26 @@ All property data is currently hard-coded in a mock array.
   imageUrl: 'your-image-url-here.jpg',
   featured: false // Set to `true` to show in the "Featured" section
 }
+
+## My Contributions
+
+I designed the overall app structure, iteratively prompted the AI assistant for code generation, and manually refined the UI and logic for search, filtering, and the favorites system. I also debugged several rendering issues and customized the Tailwind CSS configuration to better fit the project’s design goals.
+
+## Challenges Faced
+
+A key challenge was resolving a dependency conflict with Tailwind CSS. The initial project setup and some generated code were incompatible, causing styling classes not to apply correctly. This required debugging the `tailwind.config.js` and `craco.config.js` files to ensure the correct version and paths were configured, restoring the application's intended appearance.
+
+## What I Learned
+
+-   **Effective AI Prompting:** Gained significant experience in crafting precise, iterative prompts to guide an AI in generating complex React components with TypeScript and hooks.
+-   **The Human-in-the-Loop:** This project highlighted that AI-assisted coding is a partnership. The developer's role is crucial for debugging, integration, and refining the AI's output to meet specific project requirements.
+-   **Practical Git & GitHub Workflow:** Developed practical skills in version control, including troubleshooting and fixing common repository issues like incorrect file structure and ensuring cross-platform consistency with `.gitattributes`.
+
+## Future Improvements
+
+If I had more time, I would:
+
+-   Add authentication to allow users to create accounts and save their favorite properties.
+-   Deploy the application to a public cloud service like Vercel or Netlify for public access.
+-   Create a dedicated, dynamic page for each property to display more detailed information.
+-   Integrate a real-world real estate API to fetch live property data instead of using a mock array.
