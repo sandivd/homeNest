@@ -3,7 +3,7 @@
 DreamHome is a modern, responsive web application for browsing real estate listings. It was built to demonstrate a clean user interface using React, TypeScript, and Tailwind CSS. The application features dynamic search, filtering capabilities, and a "favorites" system.
 
 
-## Features
+## ✨ Features
 
 -   **Interactive Property Cards:** Clean, modern cards to display property information.
 -   **Dynamic Search:** Search for properties by title, city, or address.
@@ -12,7 +12,7 @@ DreamHome is a modern, responsive web application for browsing real estate listi
 -   **Responsive Design:** The layout is optimized for both desktop and mobile devices.
 -   **Featured Properties:** A dedicated section to highlight featured listings.
 
-## Development Approach: Vibe Coding
+## 🤖 Development Approach: Vibe Coding
 
 This project was developed using a method known as **Vibe Coding**. Instead of manually writing every line of React and Tailwind CSS, the development process involved giving high-level instructions and refinement prompts to an AI assistant, which then generated the code.
 
@@ -20,7 +20,7 @@ This project was developed using a method known as **Vibe Coding**. Instead of m
 
 This approach allowed for rapid prototyping and iteration, focusing on the overall structure and functionality of the application.
 
-## Technologies Used
+## 🛠️ Tech Stack
 
 -   **React:** A JavaScript library for building user interfaces.
 -   **TypeScript:** Adds static typing to JavaScript to improve code quality and developer experience.
@@ -29,7 +29,7 @@ This approach allowed for rapid prototyping and iteration, focusing on the overa
 -   **Create React App:** Used as the initial project boilerplate.
 -   **Craco:** Used to override the default Create React App configuration to enable Tailwind CSS.
 
-## Getting Started
+## 🚀 Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -95,21 +95,21 @@ All property data is currently hard-coded in a mock array.
 }
 ```
 
-## My Contributions
+## 🧑‍💻 My Contributions
 
 I designed the overall app structure, iteratively prompted the AI assistant for code generation, and manually refined the UI and logic for search, filtering, and the favorites system. I also debugged several rendering issues and customized the Tailwind CSS configuration to better fit the project’s design goals.
 
-## Challenges Faced
+## 🧩 Challenges Faced
 
 A key challenge was resolving a dependency conflict with Tailwind CSS. The initial project setup and some generated code were incompatible, causing styling classes not to apply correctly. This required debugging the `tailwind.config.js` and `craco.config.js` files to ensure the correct version and paths were configured, restoring the application's intended appearance.
 
-## What I Learned
+## 📚 What I Learned
 
 -   **Effective AI Prompting:** Gained significant experience in crafting precise, iterative prompts to guide an AI in generating complex React components with TypeScript and hooks.
 -   **The Human-in-the-Loop:** This project highlighted that AI-assisted coding is a partnership. The developer's role is crucial for debugging, integration, and refining the AI's output to meet specific project requirements.
 -   **Practical Git & GitHub Workflow:** Developed practical skills in version control, including troubleshooting and fixing common repository issues like incorrect file structure and ensuring cross-platform consistency with `.gitattributes`.
 
-## Future Improvements
+## 🚧 Future Improvements
 
 If I had more time, I would:
 
