@@ -93,6 +93,7 @@ All property data is currently hard-coded in a mock array.
   imageUrl: 'your-image-url-here.jpg',
   featured: false // Set to `true` to show in the "Featured" section
 }
+```
 
 ## My Contributions
 
