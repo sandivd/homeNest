@@ -1,6 +1,9 @@
-import React, { useState, useMemo } from 'react';
-import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Building, DollarSign } from 'lucide-react';
+// --- START OF FILE zillowWebsiteOpus4.tsx ---
 
+import React, { useState, useMemo, useEffect } from 'react'; // MODIFIED: Added useEffect
+import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Building, DollarSign, Moon, Sun } from 'lucide-react'; // MODIFIED: Added Moon and Sun icons
+
+// ... (The Property interface and mockProperties array remain unchanged)
 interface Property {
   id: number;
   title: string;
@@ -17,6 +20,7 @@ interface Property {
 }
 
 const mockProperties: Property[] = [
+  // ... (your mock properties data here, no changes needed)
   {
     id: 1,
     title: "Modern Downtown Apartment",
@@ -152,24 +156,27 @@ function PropertyCard({ property, isFavorite, onToggleFavorite, formatPrice }: {
   formatPrice: (price: number) => string;
 }) {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+    // MODIFIED: Added dark mode classes
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden">
       <div className="relative">
         <img src={property.imageUrl} alt={property.title} className="w-full h-48 object-cover" />
         <button
           onClick={() => onToggleFavorite(property.id)}
           aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-          className={`absolute top-2 right-2 p-1 rounded-full bg-white bg-opacity-75 hover:bg-opacity-100 transition-colors text-red-500 ${isFavorite ? 'text-red-600' : 'text-red-400'}`}
+          // MODIFIED: Added dark mode classes for the favorite button background
+          className={`absolute top-2 right-2 p-1 rounded-full bg-white bg-opacity-75 hover:bg-opacity-100 dark:bg-gray-700 dark:bg-opacity-75 dark:hover:bg-opacity-100 transition-colors text-red-500 ${isFavorite ? 'text-red-600' : 'text-red-400'}`}
         >
           <Heart fill={isFavorite ? 'currentColor' : 'none'} strokeWidth={2} className="w-6 h-6" />
         </button>
       </div>
       <div className="p-4">
-        <h4 className="text-lg font-semibold text-gray-900 mb-1 truncate" title={property.title}>{property.title}</h4>
-        <p className="text-blue-600 font-bold mb-2">{formatPrice(property.price)}</p>
-        <p className="text-gray-600 text-sm mb-2 flex items-center gap-1">
+        {/* MODIFIED: Added dark mode classes for text */}
+        <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1 truncate" title={property.title}>{property.title}</h4>
+        <p className="text-blue-600 dark:text-blue-400 font-bold mb-2">{formatPrice(property.price)}</p>
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 flex items-center gap-1">
           <MapPin className="w-4 h-4" /> {property.address}, {property.city}, {property.state}
         </p>
-        <div className="flex items-center gap-4 text-gray-600 text-sm">
+        <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400 text-sm">
           <div className="flex items-center gap-1">
             <Bed className="w-4 h-4" /> {property.bedrooms}
           </div>
@@ -191,6 +198,25 @@ export default function RealEstateListings() {
   const [priceRange, setPriceRange] = useState<string>('all');
   const [favorites, setFavorites] = useState<number[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  
+  // ADDED: State for theme management
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  // ADDED: Effect to handle theme changes and persistence
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+  
+  // ADDED: Function to toggle the theme
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   const filteredProperties = useMemo(() => {
     return mockProperties.filter(property => {
@@ -227,27 +253,41 @@ export default function RealEstateListings() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    // MODIFIED: Added dark mode classes to the main container
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      {/* MODIFIED: Added dark mode classes */}
+      <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Home className="h-8 w-8 text-blue-600 mr-3" />
-              <h1 className="text-2xl font-bold text-gray-900">HomeNest Realty</h1>
+              <Home className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">HomeNest Realty</h1>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Buy</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Rent</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Sell</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
-            </nav>
+            <div className="flex items-center gap-8"> {/* ADDED: Wrapper for nav and theme toggle */}
+              <nav className="hidden md:flex space-x-8">
+                {/* MODIFIED: Added dark mode classes */}
+                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Buy</a>
+                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Rent</a>
+                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sell</a>
+                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+              </nav>
+              {/* ADDED: Theme toggle button */}
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="bg-blue-600 text-white py-16">
+        {/* No dark mode changes needed here as it has a solid background */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-bold mb-4">Find Your Dream Home</h2>
@@ -263,7 +303,8 @@ export default function RealEstateListings() {
                 placeholder="Search by location, address, or property name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                // MODIFIED: Added dark mode classes for input
+                className="w-full pl-12 pr-4 py-4 rounded-lg text-gray-900 placeholder-gray-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
@@ -271,13 +312,15 @@ export default function RealEstateListings() {
       </section>
 
       {/* Filters Section */}
-      <section className="bg-white border-b">
+      {/* MODIFIED: Added dark mode classes */}
+      <section className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="md:hidden flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50"
+                // MODIFIED: Added dark mode classes
+                className="md:hidden flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
               >
                 <Filter className="h-4 w-4" />
                 Filters
@@ -288,7 +331,8 @@ export default function RealEstateListings() {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  // MODIFIED: Added dark mode classes
+                  className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 >
                   <option value="all">All Types</option>
                   <option value="house">House</option>
@@ -300,7 +344,8 @@ export default function RealEstateListings() {
                 <select
                   value={priceRange}
                   onChange={(e) => setPriceRange(e.target.value)}
-                  className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  // MODIFIED: Added dark mode classes
+                  className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 >
                   <option value="all">All Prices</option>
                   <option value="under-500k">Under $500K</option>
@@ -310,7 +355,8 @@ export default function RealEstateListings() {
               </div>
             </div>
             
-            <div className="text-gray-600">
+            {/* MODIFIED: Added dark mode classes */}
+            <div className="text-gray-600 dark:text-gray-400">
               {filteredProperties.length} properties found
             </div>
           </div>
@@ -323,7 +369,8 @@ export default function RealEstateListings() {
           {/* Featured Properties */}
           {filteredProperties.some(p => p.featured) && (
             <div className="mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Featured Properties</h3>
+              {/* MODIFIED: Added dark mode classes */}
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Featured Properties</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProperties.filter(p => p.featured).map(property => (
                   <PropertyCard
@@ -340,7 +387,8 @@ export default function RealEstateListings() {
 
           {/* All Properties */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">All Properties</h3>
+            {/* MODIFIED: Added dark mode classes */}
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">All Properties</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProperties.map(property => (
                 <PropertyCard
@@ -356,13 +404,15 @@ export default function RealEstateListings() {
 
           {filteredProperties.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No properties found matching your criteria.</p>
+              {/* MODIFIED: Added dark mode classes */}
+              <p className="text-gray-500 dark:text-gray-400 text-lg">No properties found matching your criteria.</p>
             </div>
           )}
         </div>
       </section>
 
       {/* Footer */}
+      {/* Footer is already dark, so minimal changes needed */}
       <footer className="bg-gray-900 text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
