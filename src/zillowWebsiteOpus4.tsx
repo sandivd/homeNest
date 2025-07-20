@@ -1,7 +1,7 @@
 // --- START OF FILE zillowWebsiteOpus4.tsx ---
 
 import React, { useState, useMemo, useEffect } from 'react'; // MODIFIED: Added useEffect
-import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Building, DollarSign, Moon, Sun } from 'lucide-react'; // MODIFIED: Added Moon and Sun icons
+import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Moon, Sun } from 'lucide-react'; // MODIFIED: Added Moon and Sun icons
 
 // ... (The Property interface and mockProperties array remain unchanged)
 interface Property {
@@ -267,10 +267,10 @@ export default function RealEstateListings() {
             <div className="flex items-center gap-8"> {/* ADDED: Wrapper for nav and theme toggle */}
               <nav className="hidden md:flex space-x-8">
                 {/* MODIFIED: Added dark mode classes */}
-                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Buy</a>
-                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Rent</a>
-                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sell</a>
-                <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <button className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Buy</button>
+                <button className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Rent</button>
+                <button className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sell</button>
+                <button className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</button>
               </nav>
               {/* ADDED: Theme toggle button */}
               <button
@@ -426,25 +426,25 @@ export default function RealEstateListings() {
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                <li><button className="hover:text-white transition-colors">About Us</button></li>
+                <li><button className="hover:text-white transition-colors">Careers</button></li>
+                <li><button className="hover:text-white transition-colors">Contact</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Buy Property</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Sell Property</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Rent Property</a></li>
+                <li><button className="hover:text-white transition-colors">Buy Property</button></li>
+                <li><button className="hover:text-white transition-colors">Sell Property</button></li>
+                <li><button className="hover:text-white transition-colors">Rent Property</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
+                <li><button className="hover:text-white transition-colors">Facebook</button></li>
+                <li><button className="hover:text-white transition-colors">Twitter</button></li>
+                <li><button className="hover:text-white transition-colors">Instagram</button></li>
               </ul>
             </div>
           </div>
