@@ -2,6 +2,7 @@
 
 DreamHome is a modern, responsive web application for browsing real estate listings. It was built to demonstrate a clean user interface using React, TypeScript, and Tailwind CSS. The application features dynamic search, filtering capabilities, and a "favorites" system.
 
+[View Live Demo](https://sandivd.github.io/homeNest/)
 
 ## ✨ Features
 
