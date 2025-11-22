@@ -1936,7 +1936,8 @@ export default function RealEstateListings() {
     return propertiesToFilter.filter(property => {
       const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         property.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.address.toLowerCase().includes(searchTerm.toLowerCase());
+        property.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        property.zipCode.includes(searchTerm);
       const matchesType = selectedType === 'all' || property.type === selectedType;
 
       let matchesPrice = true;
