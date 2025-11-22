@@ -2,7 +2,7 @@
 
 HomeNest is a comprehensive, modern real estate application built with React, TypeScript, and Tailwind CSS. It features a stunning glassmorphism UI, a complete authentication system, and dedicated sections for buying, renting, and mortgage information.
 
-[View Live Demo](https://sandivd.github.io/homeNest/)
+[View Live Demo](https://sandivd.github.io/buy/)
 
 ## ✨ Key Features
 
