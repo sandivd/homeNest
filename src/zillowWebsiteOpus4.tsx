@@ -1372,7 +1372,7 @@ function PropertyDetails({ property, onClose, isFavorite, onToggleFavorite, form
               </h3>
               <div className="space-y-3">
                 {property.schools.map((school, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+                  <div key={idx} className="flex items-start justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
                     <div className="flex-1">
                       <p className="font-medium text-gray-900 dark:text-white">{school.name}</p>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{school.distance}</p>
