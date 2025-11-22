@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import RealEstateListings, { NavBar, AuthPage, ProfilePage, MortgagePage, User } from './zillowWebsiteOpus4';
 import './App.css';
 import './index.css';
@@ -110,9 +110,9 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter basename="/homeNest">
+    <HashRouter>
       <AppContent />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
