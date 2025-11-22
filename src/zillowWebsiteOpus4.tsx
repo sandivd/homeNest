@@ -1,7 +1,7 @@
 // --- START OF FILE zillowWebsiteOpus4.tsx ---
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Moon, Sun, X, Calendar, DollarSign, School, Car, Ruler, Hammer, Info, ChevronRight, TrendingUp, HandCoins, UserCheck, ChevronDown, ChevronUp, ChevronLeft } from 'lucide-react';
+import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Moon, Sun, X, Calendar, DollarSign, School, Hammer, ChevronRight, TrendingUp, HandCoins, UserCheck, ChevronDown, ChevronUp, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Property {
@@ -1602,7 +1602,7 @@ function MortgagePage() {
                 Get pre-approved
               </button>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Already working with us? <a href="#" className="text-blue-600 hover:underline font-medium">Access your dashboard</a>
+                Already working with us? <a href="/" className="text-blue-600 hover:underline font-medium">Access your dashboard</a>
               </p>
             </div>
           </div>
@@ -2232,28 +2232,28 @@ export default function RealEstateListings() {
               <div>
                 <h4 className="font-bold text-gray-900 dark:text-white mb-4">Real Estate</h4>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-blue-600">Browse Homes</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Sell Your Home</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Rentals</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Mortgage Rates</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Browse Homes</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Sell Your Home</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Rentals</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Mortgage Rates</a></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-bold text-gray-900 dark:text-white mb-4">Company</h4>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-blue-600">About Us</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Careers</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Press</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Contact</a></li>
+                  <li><a href="/" className="hover:text-blue-600">About Us</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Careers</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Press</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Contact</a></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-bold text-gray-900 dark:text-white mb-4">Resources</h4>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-blue-600">Blog</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Guides</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Help Center</a></li>
-                  <li><a href="#" className="hover:text-blue-600">Privacy</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Blog</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Guides</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Help Center</a></li>
+                  <li><a href="/" className="hover:text-blue-600">Privacy</a></li>
                 </ul>
               </div>
             </div>
