@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
-
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f3f4f6;
