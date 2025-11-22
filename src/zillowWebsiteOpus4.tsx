@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Bed, Bath, Square, MapPin, Heart, Filter, Home, Moon, Sun, X, Calendar, DollarSign, School, Hammer, ChevronRight, TrendingUp, HandCoins, UserCheck, ChevronDown, ChevronUp, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 interface Property {
   id: number;
@@ -38,7 +39,7 @@ interface Property {
   taxHistory: { year: number; tax: number; assessment: number }[];
   schools: { name: string; rating: number; distance: string }[];
 }
-interface User {
+export interface User {
   email: string;
   passwordHash: string;
   name: string;
@@ -50,7 +51,7 @@ interface User {
   maxPrice: string;
 }
 
-function AuthPage({ onSignIn, onSignUp, onClose }: {
+export function AuthPage({ onSignIn, onSignUp, onClose }: {
   onSignIn: (email: string, password: string) => Promise<void>,
   onSignUp: (user: Omit<User, 'passwordHash'>, password: string) => Promise<void>,
   onClose: () => void
@@ -169,7 +170,7 @@ function AuthPage({ onSignIn, onSignUp, onClose }: {
   );
 }
 
-function ProfilePage({ user, onUpdateProfile, onSignOut }: { user: User, onUpdateProfile: (user: User) => void, onSignOut: () => void }) {
+export function ProfilePage({ user, onUpdateProfile, onSignOut }: { user: User, onUpdateProfile: (user: User) => void, onSignOut: () => void }) {
   const [formData, setFormData] = useState(user);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -1497,7 +1498,7 @@ function PropertyCard({ property, isFavorite, onToggleFavorite, formatPrice, onC
   );
 }
 
-function MortgagePage() {
+export function MortgagePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
@@ -1787,7 +1788,7 @@ function MortgagePage() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-600 dark:text-gray-300 pb-4 leading-relaxed">
+                      <p className="text-gray-600 dark:text-gray-300 pb-4 leading-relaxed text-left">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -1868,42 +1869,18 @@ function MortgagePage() {
   );
 }
 
-export default function RealEstateListings() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedType, setSelectedType] = useState<string>('all');
-  const [priceRange, setPriceRange] = useState<string>('all');
-  const [favorites, setFavorites] = useState<number[]>([]);
-  const [showFilters, setShowFilters] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-  const [listingType, setListingType] = useState<'buy' | 'rent' | 'mortgage'>('buy');
-
-  // Auth State
-  const [user, setUser] = useState<User | null>(null);
-  const [users, setUsers] = useState<User[]>([]);
-  const [view, setView] = useState<'home' | 'signin' | 'signup' | 'profile'>('home');
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  // Navbar hide on scroll
+export function NavBar({ user, theme, toggleTheme }: { user: User | null, theme: string, toggleTheme: () => void }) {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          // Scrolling down
           setShowNavbar(false);
         } else {
-          // Scrolling up
           setShowNavbar(true);
         }
         setLastScrollY(window.scrollY);
@@ -1918,17 +1895,82 @@ export default function RealEstateListings() {
     }
   }, [lastScrollY]);
 
-  // Load users from localStorage on mount
-  useEffect(() => {
-    const storedUsers = localStorage.getItem('zillow_users');
-    if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
-    }
-  }, []);
+  const isActive = (path: string) => location.pathname.startsWith(path);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  return (
+    <nav className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-md z-50 border border-white/30 dark:border-gray-700/30 rounded-full shadow-lg transition-all duration-300 ${showNavbar ? 'top-2' : '-top-20'}`}>
+      <div className="px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="bg-blue-600 p-2 rounded-lg">
+              <Home className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
+              HomeNest
+            </span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              to="/buy"
+              className={`text-sm font-medium transition-colors ${isActive('/buy')
+                ? 'text-gray-900 dark:text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+            >
+              Buy
+            </Link>
+            <Link
+              to="/rent"
+              className={`text-sm font-medium transition-colors ${isActive('/rent')
+                ? 'text-gray-900 dark:text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+            >
+              Rent
+            </Link>
+            <Link
+              to="/mortgage"
+              className={`text-sm font-medium transition-colors ${isActive('/mortgage')
+                ? 'text-gray-900 dark:text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+            >
+              Mortgage
+            </Link>
+            <Link
+              to={user ? "/profile" : "/signin"}
+              className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              {user ? user.name : 'Sign in'}
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              {theme === 'light' ? (
+                <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              ) : (
+                <Sun className="w-5 h-5 text-gray-400" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default function RealEstateListings({ listingType }: { listingType: 'buy' | 'rent' | 'mortgage' }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState<string>('all');
+  const [priceRange, setPriceRange] = useState<string>('all');
+  const [favorites, setFavorites] = useState<number[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
 
   const filteredProperties = useMemo(() => {
     let propertiesToFilter = listingType === 'rent' ? mockRentProperties : mockProperties;
@@ -1968,283 +2010,139 @@ export default function RealEstateListings() {
     }).format(price) + (listingType === 'rent' ? '/mo' : '');
   };
 
-  // Auth Logic
-  const hashPassword = async (password: string) => {
-    const msgBuffer = new TextEncoder().encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  };
-
-  const handleSignUp = async (newUser: Omit<User, 'passwordHash'>, password: string) => {
-    if (users.some(u => u.email === newUser.email)) {
-      throw new Error('User already exists');
-    }
-    const passwordHash = await hashPassword(password);
-    const userWithHash = { ...newUser, passwordHash };
-    const updatedUsers = [...users, userWithHash];
-    setUsers(updatedUsers);
-    localStorage.setItem('zillow_users', JSON.stringify(updatedUsers));
-    setUser(userWithHash);
-    setView('home');
-  };
-
-  const handleSignIn = async (email: string, password: string) => {
-    const passwordHash = await hashPassword(password);
-    const foundUser = users.find(u => u.email === email && u.passwordHash === passwordHash);
-    if (!foundUser) {
-      throw new Error('Invalid email or password');
-    }
-    setUser(foundUser);
-    setView('home');
-  };
-
-  const handleUpdateProfile = (updatedUser: User) => {
-    const updatedUsers = users.map(u => u.email === updatedUser.email ? updatedUser : u);
-    setUsers(updatedUsers);
-    localStorage.setItem('zillow_users', JSON.stringify(updatedUsers));
-    setUser(updatedUser);
-  };
-
-  const handleSignOut = () => {
-    setUser(null);
-    setView('home');
-  };
-
-  if (view === 'signin' || view === 'signup') {
-    return <AuthPage onSignIn={handleSignIn} onSignUp={handleSignUp} onClose={() => setView('home')} />;
-  }
-
-  if (view === 'profile' && user) {
-    return (
-      <>
-        <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800 transition-colors duration-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-20 items-center">
-              <div className="flex items-center gap-2 cursor-pointer" onClick={() => setView('home')}>
-                <div className="bg-blue-600 p-2 rounded-lg">
-                  <Home className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">
-                  HomeNest
-                </span>
-              </div>
-              <button onClick={() => setView('home')} className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-        </nav>
-        <ProfilePage user={user} onUpdateProfile={handleUpdateProfile} onSignOut={handleSignOut} />
-      </>
-    );
-  }
-
   return (
-    <div className={`min-h-screen bg-gray-100 dark:bg-black transition-colors duration-200 ${theme} p-1.5 md:p-2`}>
+    <div className="min-h-screen bg-gray-100 dark:bg-black transition-colors duration-200 p-1.5 md:p-2">
       <div className="min-h-[calc(100vh-0.75rem)] md:min-h-[calc(100vh-1rem)] bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl relative">
-        {/* Navigation */}
-        <nav className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-md z-50 border border-white/30 dark:border-gray-700/30 rounded-full shadow-lg transition-all duration-300 ${showNavbar ? 'top-2' : '-top-20'
-          }`}>
-          <div className="px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo */}
-              <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setListingType('buy'); setView('home'); }}>
-                <div className="bg-blue-600 p-2 rounded-lg">
-                  <Home className="w-5 h-5 text-white" />
+
+        <>
+          {/* Hero Section */}
+          <div className="relative h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Beautiful Modern Home"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
+            </div>
+
+            <div className="relative z-10 w-full max-w-4xl px-4 text-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+              >
+                Find your place<br />
+                <span className="text-blue-400">to call home.</span>
+              </motion.h1>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20 shadow-2xl max-w-2xl mx-auto"
+              >
+                <div className="flex flex-col md:flex-row gap-2">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
+                    <input
+                      type="text"
+                      placeholder="Address, City, Zip, or Neighborhood"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/10 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/30">
+                    Search
+                  </button>
                 </div>
-                <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  HomeNest
-                </span>
-              </div>
-
-              {/* Center Navigation Links */}
-              <div className="hidden md:flex items-center gap-8">
-                <button
-                  onClick={() => setListingType('buy')}
-                  className={`text-sm font-medium transition-colors ${listingType === 'buy'
-                    ? 'text-gray-900 dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                    }`}
-                >
-                  Buy
-                </button>
-                <button
-                  onClick={() => setListingType('rent')}
-                  className={`text-sm font-medium transition-colors ${listingType === 'rent'
-                    ? 'text-gray-900 dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                    }`}
-                >
-                  Rent
-                </button>
-                <button
-                  onClick={() => setListingType('mortgage')}
-                  className={`text-sm font-medium transition-colors ${listingType === 'mortgage'
-                    ? 'text-gray-900 dark:text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                    }`}
-                >
-                  Mortgage
-                </button>
-                <button
-                  onClick={() => user ? setView('profile') : setView('signin')}
-                  className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  {user ? user.name : 'Sign in'}
-                </button>
-              </div>
-
-              {/* Right Side - Theme Toggle */}
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                >
-                  {theme === 'light' ? (
-                    <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                  ) : (
-                    <Sun className="w-5 h-5 text-gray-400" />
-                  )}
-                </button>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </nav>
 
-        {listingType === 'mortgage' ? (
-          <MortgagePage />
-        ) : (
-          <>
-            {/* Hero Section */}
-            <div className="relative h-[600px] flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 z-0">
-                <img
-                  src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Beautiful Modern Home"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
+          {/* Main Content */}
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            {/* Filters */}
+            <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+              <div className="flex items-center gap-4 overflow-x-auto pb-2 w-full md:w-auto">
+                <button
+                  onClick={() => setSelectedType('all')}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'all'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                >
+                  All Properties
+                </button>
+                <button
+                  onClick={() => setSelectedType('house')}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'house'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                >
+                  Houses
+                </button>
+                <button
+                  onClick={() => setSelectedType('apartment')}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'apartment'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                >
+                  Apartments
+                </button>
+                <button
+                  onClick={() => setSelectedType('condo')}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'condo'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                >
+                  Condos
+                </button>
               </div>
 
-              <div className="relative z-10 w-full max-w-4xl px-4 text-center">
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
-                >
-                  Find your place<br />
-                  <span className="text-blue-400">to call home.</span>
-                </motion.h1>
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <div className="relative group">
+                  <button
+                    className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-500 transition-colors"
+                    onClick={() => setShowFilters(!showFilters)}
+                  >
+                    <Filter className="w-4 h-4" />
+                    <span>Price Range</span>
+                  </button>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20 shadow-2xl max-w-2xl mx-auto"
-                >
-                  <div className="flex flex-col md:flex-row gap-2">
-                    <div className="relative flex-1">
-                      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
-                      <input
-                        type="text"
-                        placeholder="Address, City, Zip, or Neighborhood"
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/10 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
+                  {showFilters && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-20 py-2">
+                      <button onClick={() => setPriceRange('all')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">Any Price</button>
+                      <button onClick={() => setPriceRange('0-500000')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">Under $500k</button>
+                      <button onClick={() => setPriceRange('500000-1000000')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">$500k - $1M</button>
+                      <button onClick={() => setPriceRange('1000000-')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">$1M+</button>
                     </div>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/30">
-                      Search
-                    </button>
-                  </div>
-                </motion.div>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-              {/* Filters */}
-              <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-                <div className="flex items-center gap-4 overflow-x-auto pb-2 w-full md:w-auto">
-                  <button
-                    onClick={() => setSelectedType('all')}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'all'
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
-                      }`}
-                  >
-                    All Properties
-                  </button>
-                  <button
-                    onClick={() => setSelectedType('house')}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'house'
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
-                      }`}
-                  >
-                    Houses
-                  </button>
-                  <button
-                    onClick={() => setSelectedType('apartment')}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'apartment'
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
-                      }`}
-                  >
-                    Apartments
-                  </button>
-                  <button
-                    onClick={() => setSelectedType('condo')}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedType === 'condo'
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
-                      }`}
-                  >
-                    Condos
-                  </button>
-                </div>
-
-                <div className="flex items-center gap-4 w-full md:w-auto">
-                  <div className="relative group">
-                    <button
-                      className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-500 transition-colors"
-                      onClick={() => setShowFilters(!showFilters)}
-                    >
-                      <Filter className="w-4 h-4" />
-                      <span>Price Range</span>
-                    </button>
-
-                    {showFilters && (
-                      <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 z-20 py-2">
-                        <button onClick={() => setPriceRange('all')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">Any Price</button>
-                        <button onClick={() => setPriceRange('0-500000')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">Under $500k</button>
-                        <button onClick={() => setPriceRange('500000-1000000')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">$500k - $1M</button>
-                        <button onClick={() => setPriceRange('1000000-')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-900 dark:text-white">$1M+</button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Property Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <AnimatePresence>
-                  {filteredProperties.map((property) => (
-                    <PropertyCard
-                      key={property.id}
-                      property={property}
-                      isFavorite={favorites.includes(property.id)}
-                      onToggleFavorite={toggleFavorite}
-                      formatPrice={formatPrice}
-                      onClick={() => setSelectedProperty(property)}
-                    />
-                  ))}
-                </AnimatePresence>
-              </div>
-            </main>
-          </>
-        )}
+            {/* Property Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence>
+                {filteredProperties.map((property) => (
+                  <PropertyCard
+                    key={property.id}
+                    property={property}
+                    isFavorite={favorites.includes(property.id)}
+                    onToggleFavorite={toggleFavorite}
+                    formatPrice={formatPrice}
+                    onClick={() => setSelectedProperty(property)}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
+          </main>
+        </>
 
         {/* Footer */}
         <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 mt-12">
@@ -2292,7 +2190,7 @@ export default function RealEstateListings() {
               </div>
             </div>
             <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8 text-center text-gray-600 dark:text-gray-400">
-              <p>&copy; 2024 HomeNest Real Estate. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} HomeNest Real Estate. All rights reserved.</p>
             </div>
           </div>
         </footer>
