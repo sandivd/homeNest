@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Geist Sans', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       colors: {
         glass: {
