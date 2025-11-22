@@ -110,7 +110,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/homeNest">
       <AppContent />
     </BrowserRouter>
   );
