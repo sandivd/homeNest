@@ -1,3 +1,4 @@
+import Brand from './brand';
 import PropertyImage from "./property-image";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -164,8 +165,7 @@ export default function PropertyDetailDialog({
       <section ref={dialogRef} className="detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title">
         <header className="detail-dialog-header">
           <a href={`#/${home.listingType}`} className="detail-brand" onClick={onClose} aria-label="HomeNest home">
-            <span className="brand-symbol"><Icon name="home" size={17} /></span>
-            <span>HomeNest<span className="brand-period">.</span></span>
+            <Brand />
           </a>
           <div className="detail-header-actions">
             <button type="button" className="detail-icon-button" onClick={shareHome} aria-label="Share this home">

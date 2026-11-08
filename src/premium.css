@@ -4128,3 +4128,10 @@ button {
   .mortgage-card { padding: 22px 18px; }
   .tax-table th, .tax-table td { padding-inline: 4px; }
 }
+
+/* The doorway mark is shared by the header, footer, and property dialog. */
+.brand-mark { display: block; flex: 0 0 auto; width: 35px; height: 39px; color: var(--forest); }
+.brand-wordmark { letter-spacing: -.8px; }
+.detail-brand .brand-mark, .footer-brand .brand-mark { width: 30px; height: 34px; }
+@media (max-width: 600px) { .brand-mark { width: 30px; height: 34px; } }
+@media (max-width: 380px) { .detail-brand { gap: 5px; font-size: 20px; } .detail-brand .brand-mark { width: 26px; height: 30px; } }

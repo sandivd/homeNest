@@ -68,3 +68,47 @@
 [data-theme="dark"] .toggle-filter i::after { background: var(--ink); }
 [data-theme="dark"] .toggle-filter input:checked + i { background: var(--action-bg); }
 [data-theme="dark"] .main-nav .nav-active::after { background: var(--forest); }
+
+/* Keep paired surfaces and text explicit for the map/search controls. */
+[data-theme="dark"] .map-panel-heading { color: #e5eee8; background: #20342a; border-color: #30443a; }
+[data-theme="dark"] .map-panel-heading strong { color: #e5eee8; }
+[data-theme="dark"] .map-panel-heading > span { color: #c1cfc6; }
+[data-theme="dark"] .view-switch { background: #20342a; border-color: #5d7868; }
+[data-theme="dark"] .view-switch button { color: #c1cfc6; }
+[data-theme="dark"] .view-switch .view-active { color: #e5eee8; background: #32624c; }
+[data-theme="dark"] .location-icon { background: #304c3d; color: #d0e5d8; }
+[data-theme="dark"] .location-field-copy input::placeholder { color: #a8b9ae; opacity: 1; }
+[data-theme="dark"] .sort-select-wrap select { background: #20342a; color: #e5eee8; }
+
+/* Decorative dividers stay quieter than the borders on interactive controls. */
+[data-theme="dark"] .detail-dialog,
+[data-theme="dark"] .detail-dialog-header,
+[data-theme="dark"] .detail-heading-block,
+[data-theme="dark"] .detail-section,
+[data-theme="dark"] .facts-grid,
+[data-theme="dark"] .history-chart-card,
+[data-theme="dark"] .history-table-header,
+[data-theme="dark"] .history-table-row,
+[data-theme="dark"] .tax-table th,
+[data-theme="dark"] .tax-table td,
+[data-theme="dark"] .school-row,
+[data-theme="dark"] .mortgage-card,
+[data-theme="dark"] .monthly-total,
+[data-theme="dark"] .payment-breakdown,
+[data-theme="dark"] .tour-form-wrap,
+[data-theme="dark"] .local-advisor-card,
+[data-theme="dark"] .detail-safe-note,
+[data-theme="dark"] .detail-bottom-note { border-color: #30443a; }
+[data-theme="dark"] .detail-icon-button,
+[data-theme="dark"] .detail-close { background: #20342a; color: #e5eee8; border-color: #5d7868; }
+[data-theme="dark"] .detail-icon-button.detail-saved { color: #f0a498; }
+[data-theme="dark"] .calculator-control label,
+[data-theme="dark"] .payment-breakdown > div { color: #c1cfc6; }
+[data-theme="dark"] .calculator-control label strong,
+[data-theme="dark"] .payment-breakdown strong { color: #e5eee8; }
+[data-theme="dark"] .detail-scroll-area { scrollbar-color: #506b5a #1b2d24; }
+[data-theme="dark"] .calculator-control input[type="range"] { appearance: none; height: 24px; background: transparent; }
+[data-theme="dark"] .calculator-control input[type="range"]::-webkit-slider-runnable-track { height: 5px; border-radius: 8px; background: #506b5a; }
+[data-theme="dark"] .calculator-control input[type="range"]::-moz-range-track { height: 5px; border-radius: 8px; background: #506b5a; }
+[data-theme="dark"] .calculator-control input[type="range"]::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; border-radius: 50%; margin-top: -6.5px; background: #acd3b9; }
+[data-theme="dark"] .calculator-control input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border: 0; border-radius: 50%; background: #acd3b9; }

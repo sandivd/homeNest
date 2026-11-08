@@ -1,3 +1,4 @@
+import Brand from './brand';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
@@ -7,7 +8,7 @@ export type HeaderProps = { user: User | null; theme: string; toggleTheme: () =>
 export function PremiumHeader({ user, theme, toggleTheme, savedCount = 0, showSavedOnly = false, onToggleSaved }: HeaderProps & { savedCount?: number; showSavedOnly?: boolean; onToggleSaved?: () => void }) {
   const [open, setOpen] = useState(false);
   return <header className="site-header"><div className="header-inner">
-    <NavLink to="/buy" className="brand-lockup" aria-label="HomeNest home"><span className="brand-symbol"><Icon name="home" size={18} /></span><span>HomeNest<span className="brand-period">.</span></span></NavLink>
+    <NavLink to="/buy" className="brand-lockup" aria-label="HomeNest home"><Brand /></NavLink>
     <nav className={`main-nav ${open ? 'nav-open' : ''}`} aria-label="Main navigation">
       {['Buy', 'Rent', 'Mortgage'].map(label => <NavLink key={label} to={'/' + label.toLowerCase()} className={({isActive}) => isActive ? 'nav-active' : ''} onClick={() => setOpen(false)}>{label}</NavLink>)}
       <NavLink to={user ? '/profile' : '/signin'} onClick={() => setOpen(false)}>{user ? user.name : 'Sign in'}</NavLink>

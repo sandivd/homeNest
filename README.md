@@ -27,4 +27,6 @@ npx tsc --noEmit
 CI=true npm test -- --watchAll=false --runInBand
 ```
 
+Browser checks run against the production build: `npx playwright install chromium`, then `npm run test:browser`. These also run before deployment.
+
 The app uses Create React App with CRACO and deploys to GitHub Pages through the workflow in `.github/workflows/deploy.yml`.

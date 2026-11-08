@@ -1,3 +1,4 @@
+import Brand from './brand';
 import PropertyImage from "./property-image";
 
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
@@ -392,7 +393,7 @@ export default function HomeSearchExperience({ homes, ...headerProps }: { homes:
 
       <footer className="site-footer">
         <div className="footer-inner content-container">
-          <button type="button" className="brand-lockup footer-brand" onClick={() => document.getElementById("top")?.scrollIntoView({ behavior: "smooth" })}><span className="brand-symbol"><Icon name="home" size={17} /></span><span>HomeNest<span className="brand-period">.</span></span></button>
+          <button type="button" className="brand-lockup footer-brand" onClick={() => document.getElementById("top")?.scrollIntoView({ behavior: "smooth" })}><Brand /></button>
           <p>Find the place that feels like your own.</p>
           <div className="footer-links"><button type="button" onClick={() => document.getElementById("homes")?.scrollIntoView({ behavior: "smooth" })}>Explore homes</button><button type="button" onClick={() => document.getElementById("neighborhoods")?.scrollIntoView({ behavior: "smooth" })}>Neighborhoods</button></div>
         </div>

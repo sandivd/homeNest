@@ -34,12 +34,14 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # Use a recent LTS version of Node.js
+          node-version: 22
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
+      - name: Install browser for production UI checks
+        run: npx playwright install --with-deps chromium
+      - name: Build and check production UI
+        run: npm run test:browser
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
