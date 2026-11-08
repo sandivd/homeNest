@@ -125,7 +125,7 @@ button {
   gap: 9px;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 700;
   letter-spacing: -1.3px;
   white-space: nowrap;
@@ -2069,7 +2069,7 @@ button {
   z-index: 100;
   inset: 0;
   display: grid;
-  padding: 23px;
+  padding: 16px;
   place-items: center;
   background: rgba(20, 34, 27, 0.66);
   backdrop-filter: blur(5px);
@@ -2078,8 +2078,8 @@ button {
 
 .detail-dialog {
   display: grid;
-  width: min(1120px, 100%);
-  max-height: min(94vh, 1120px);
+  width: min(1440px, 100%);
+  max-height: min(96dvh, 1400px);
   overflow: hidden;
   grid-template-rows: auto minmax(0, 1fr);
   border: 1px solid rgba(238, 241, 233, 0.72);
@@ -2093,7 +2093,7 @@ button {
   position: relative;
   z-index: 3;
   display: flex;
-  min-height: 57px;
+  min-height: 68px;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -2104,7 +2104,7 @@ button {
 
 .detail-brand {
   gap: 7px;
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .detail-brand .brand-symbol {
@@ -2130,7 +2130,7 @@ button {
   border: 1px solid #e5e8e2;
   border-radius: 3px;
   background: white;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
   transition: color 150ms ease, border 150ms ease, background 150ms ease;
 }
@@ -2173,9 +2173,9 @@ button {
 }
 
 .detail-content-wrap {
-  max-width: 1040px;
+  max-width: 1360px;
   margin-inline: auto;
-  padding: 22px 30px 30px;
+  padding: 28px 40px 40px;
 }
 
 .detail-gallery {
@@ -2242,7 +2242,7 @@ button {
   border-radius: 3px;
   background: rgba(31, 46, 37, 0.58);
   backdrop-filter: blur(7px);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2258,7 +2258,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.66);
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.93);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2271,7 +2271,7 @@ button {
 
 .detail-main-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.48fr) minmax(285px, 0.8fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(340px, 1fr);
   align-items: start;
   gap: 33px;
   padding-top: 25px;
@@ -2289,7 +2289,7 @@ button {
 .detail-kicker {
   margin: 0 0 5px;
   color: #7b8980;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.75px;
   text-transform: uppercase;
@@ -2303,7 +2303,7 @@ button {
 .detail-heading-block h1 {
   margin: 0;
   color: var(--ink);
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 700;
   letter-spacing: -1.2px;
   line-height: 1.2;
@@ -2312,7 +2312,7 @@ button {
 .detail-address {
   margin: 3px 0 0;
   color: #79847c;
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .detail-stats {
@@ -2327,7 +2327,7 @@ button {
   align-items: center;
   gap: 5px;
   color: #7d8980;
-  font-size: 10px;
+  font-size: 16px;
 }
 
 .detail-stats > span .icon {
@@ -2336,7 +2336,7 @@ button {
 
 .detail-stats strong {
   color: #34483c;
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .detail-stats .detail-lot-stat {
@@ -2359,7 +2359,7 @@ button {
 .section-eyebrow {
   margin: 0 0 4px;
   color: #879288;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 1.15px;
 }
@@ -2369,7 +2369,7 @@ button {
   margin: 0;
   color: #2c4237;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 21px;
+  font-size: 28px;
   font-weight: 400;
   letter-spacing: -0.45px;
   line-height: 1.2;
@@ -2379,15 +2379,15 @@ button {
 .history-currency,
 .school-rating-note {
   color: #88938b;
-  font-size: 8px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
 .detail-description {
   margin: 0;
   color: #68776d;
-  font-size: 10px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .highlight-grid {
@@ -2402,7 +2402,7 @@ button {
   align-items: center;
   gap: 7px;
   color: #52645a;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .highlight-grid i {
@@ -2433,12 +2433,12 @@ button {
 
 .facts-grid span {
   color: #929b93;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .facts-grid strong {
   color: #405249;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2459,12 +2459,12 @@ button {
   align-items: center;
   justify-content: space-between;
   color: #8a948c;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .history-chart-topline strong {
   color: #405448;
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .price-chart {
@@ -2498,7 +2498,7 @@ button {
   display: flex;
   justify-content: space-between;
   color: #99a199;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .history-table {
@@ -2516,7 +2516,7 @@ button {
 .history-table-header {
   padding: 6px 8px;
   color: #909a91;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -2530,18 +2530,18 @@ button {
   padding: 4px 8px;
   color: #718076;
   border-top: 1px solid #edf0eb;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .history-table-row strong {
   color: #43574a;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .tiny-disclaimer {
   margin: 9px 0 0;
   color: #a0a79f;
-  font-size: 8px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
@@ -2551,7 +2551,7 @@ button {
 
 .school-row {
   display: grid;
-  grid-template-columns: 36px 1fr auto;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
   align-items: center;
   gap: 10px;
   min-height: 54px;
@@ -2560,22 +2560,22 @@ button {
 
 .school-score {
   display: flex;
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   align-items: center;
   justify-content: center;
   color: #3b5b44;
   border: 1px solid #d7e4d6;
   border-radius: 50%;
   background: #eff5ed;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 800;
 }
 
 .school-score small {
   margin-top: 4px;
   color: #849288;
-  font-size: 6px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -2588,14 +2588,14 @@ button {
 .school-info strong {
   overflow: hidden;
   color: #3a4f43;
-  font-size: 9px;
+  font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .school-info span {
   color: #89938c;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .school-info i {
@@ -2605,7 +2605,7 @@ button {
 
 .school-distance {
   color: #718177;
-  font-size: 8px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -2625,9 +2625,9 @@ button {
 }
 
 .mortgage-card h2 {
-  max-width: 220px;
+  max-width: none;
   margin-top: 4px;
-  font-size: 20px;
+  font-size: 28px;
 }
 
 .monthly-total {
@@ -2642,13 +2642,13 @@ button {
 
 .monthly-total strong {
   color: #2d4837;
-  font-size: 25px;
+  font-size: 34px;
   letter-spacing: -1px;
 }
 
 .monthly-total span {
   color: #7d897e;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .calculator-control {
@@ -2662,12 +2662,12 @@ button {
   gap: 7px;
   margin-bottom: 7px;
   color: #6d7c71;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .calculator-control label strong {
   color: #40564a;
-  font-size: 9px;
+  font-size: 14px;
   text-align: right;
 }
 
@@ -2685,7 +2685,7 @@ button {
   justify-content: space-between;
   margin-top: 4px;
   color: #a0a99e;
-  font-size: 7px;
+  font-size: 14px;
 }
 
 .payment-breakdown {
@@ -2701,19 +2701,19 @@ button {
   justify-content: space-between;
   gap: 10px;
   color: #79867b;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .payment-breakdown strong {
   color: #4e5f53;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .mortgage-disclaimer {
   margin: 12px 0 13px;
   color: #89958a;
-  font-size: 7px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -2730,7 +2730,7 @@ button {
   border: 1px solid var(--forest);
   border-radius: 3px;
   background: var(--forest);
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 700;
   transition: background 150ms ease, transform 150ms ease;
 }
@@ -2748,7 +2748,7 @@ button {
   gap: 5px;
   margin: 9px 0 0;
   color: #839087;
-  font-size: 7px;
+  font-size: 14px;
 }
 
 .tour-helper .icon {
@@ -2776,19 +2776,19 @@ button {
 .tour-form-heading strong {
   color: #3a4e41;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 400;
 }
 
 .tour-form-heading span {
   color: #89958a;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .tour-form label {
   margin-top: 3px;
   color: #607067;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2807,7 +2807,7 @@ button {
   border: 1px solid #dfe6dc;
   border-radius: 3px;
   background: #fff;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .tour-form input::placeholder,
@@ -2825,7 +2825,7 @@ button {
   min-height: 38px;
   margin-top: 5px;
   padding-inline: 12px;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .tour-submit:disabled {
@@ -2836,14 +2836,14 @@ button {
 .tour-error {
   margin: 3px 0;
   color: #9d4943;
-  font-size: 8px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 .tour-privacy {
   margin: 0;
   color: #98a195;
-  font-size: 7px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -2868,14 +2868,14 @@ button {
 .tour-success > strong {
   color: #32493a;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
 }
 
 .tour-success > p {
   margin: 5px 0 8px;
   color: #7b897e;
-  font-size: 8px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
@@ -2885,7 +2885,7 @@ button {
   border: 0;
   border-bottom: 1px solid #bacaba;
   background: transparent;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2913,13 +2913,13 @@ button {
 
 .local-advisor-card > div:nth-child(2) > strong {
   color: #46574c;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .local-advisor-card p {
   margin: 3px 0 0;
   color: #879188;
-  font-size: 8px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
@@ -2943,7 +2943,7 @@ button {
   border: 1px solid #e9ebe5;
   border-radius: 3px;
   background: #f8f8f3;
-  font-size: 7px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -2960,7 +2960,7 @@ button {
   padding-top: 13px;
   color: #939c93;
   border-top: 1px solid #e8eae4;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .detail-bottom-note .icon {
@@ -3815,7 +3815,7 @@ button {
   }
 
   .detail-brand {
-    font-size: 20px;
+    font-size: 28px;
   }
 
   .detail-header-actions {
@@ -3857,14 +3857,14 @@ button {
     top: 9px;
     left: 9px;
     padding: 5px 7px;
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .gallery-count {
     right: 8px;
     bottom: 8px;
     padding: 5px 7px;
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .detail-main-grid {
@@ -3878,11 +3878,11 @@ button {
   }
 
   .detail-heading-block h1 {
-    font-size: 27px;
+    font-size: 34px;
   }
 
   .detail-address {
-    font-size: 9px;
+    font-size: 14px;
     line-height: 1.45;
   }
 
@@ -3893,7 +3893,7 @@ button {
 
   .detail-stats > span {
     gap: 4px;
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .detail-stats > span .icon {
@@ -3902,7 +3902,7 @@ button {
   }
 
   .detail-stats strong {
-    font-size: 9px;
+    font-size: 14px;
   }
 
   .detail-section {
@@ -3910,11 +3910,11 @@ button {
   }
 
   .section-heading-row h2 {
-    font-size: 19px;
+    font-size: 28px;
   }
 
   .detail-description {
-    font-size: 9px;
+    font-size: 14px;
   }
 
   .highlight-grid {
@@ -3922,7 +3922,7 @@ button {
   }
 
   .highlight-grid > span {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .facts-grid {
@@ -3932,7 +3932,7 @@ button {
 
   .facts-grid span,
   .facts-grid strong {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .history-chart-card {
@@ -3952,11 +3952,11 @@ button {
   .history-table-row,
   .history-table-header {
     padding-inline: 5px;
-    font-size: 7px;
+    font-size: 14px;
   }
 
   .history-table-row strong {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .school-row {
@@ -3964,12 +3964,12 @@ button {
   }
 
   .school-info strong {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .school-info span,
   .school-distance {
-    font-size: 7px;
+    font-size: 14px;
   }
 
   .detail-sidebar {
@@ -3983,31 +3983,31 @@ button {
 
   .mortgage-card h2 {
     max-width: 280px;
-    font-size: 19px;
+    font-size: 28px;
   }
 
   .monthly-total strong {
-    font-size: 26px;
+    font-size: 34px;
   }
 
   .calculator-control label,
   .payment-breakdown > div {
-    font-size: 9px;
+    font-size: 14px;
   }
 
   .calculator-control label strong,
   .payment-breakdown strong {
-    font-size: 9px;
+    font-size: 14px;
   }
 
   .mortgage-disclaimer,
   .tour-helper {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .detail-bottom-note {
     align-items: flex-start;
-    font-size: 7px;
+    font-size: 14px;
     line-height: 1.5;
   }
 }
@@ -4102,4 +4102,43 @@ button {
 @media (max-width: 600px) {
   .App > .min-h-screen .flex.justify-between.items-start { flex-wrap: wrap; gap: 20px; }
   .App > .min-h-screen .px-8 { padding-inline: 20px; }
+}
+
+/* Room for reading at larger text sizes, including narrow screens. */
+.detail-dialog { font-size: 16px; line-height: 1.6; }
+.detail-description { font-size: 17px; }
+.detail-dialog button { min-height: 44px; }
+.detail-close { width: 44px; height: 44px; }
+.detail-section > h2, .detail-section h3 { font-size: 24px; }
+.detail-section { padding-block: 30px; }
+.section-heading-row { flex-wrap: wrap; }
+.school-info strong { white-space: normal; overflow: visible; }
+.school-row { padding-block: 14px; }
+.price-chart { height: 210px; }
+.history-table-row { min-height: 46px; }
+.tax-table { font-size: 16px; }
+.mortgage-card { padding: 26px 24px; }
+.calculator-control { margin-bottom: 22px; }
+.calculator-control label { flex-wrap: wrap; }
+.calculator-control input[type="range"] { height: 24px; }
+.tour-form input, .tour-form select, .tour-form textarea { font-size: 16px; min-height: 44px; }
+.detail-bottom-note { align-items: flex-start; }
+@media (min-width: 601px) and (max-width: 1000px) {
+  .detail-main-grid { grid-template-columns: minmax(0, 1fr); }
+  .detail-sidebar { position: static; }
+}
+@media (max-width: 600px) {
+  .detail-dialog-header { min-height: 64px; }
+  .detail-brand { font-size: 24px; }
+  .detail-icon-button { min-width: 40px; }
+  .detail-content-wrap { padding-inline: 20px; }
+  .detail-description, .highlight-grid > span, .detail-address { font-size: 16px; }
+  .highlight-grid { grid-template-columns: minmax(0, 1fr); }
+  .section-heading-row h2, .mortgage-card h2 { font-size: 26px; }
+  .school-row { grid-template-columns: 44px minmax(0, 1fr); }
+  .school-distance { grid-column: 2; }
+  .school-rating-note { white-space: normal; }
+  .history-table-header, .history-table-row { grid-template-columns: 0.85fr 1fr 0.85fr; overflow-wrap: anywhere; }
+  .mortgage-card { padding: 22px 18px; }
+  .tax-table th, .tax-table td { padding-inline: 4px; }
 }
