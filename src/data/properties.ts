@@ -33,6 +33,7 @@ export interface Property {
   schools: { name: string; rating: number; distance: string }[];
 }
 
+// Illustrative histories are curated per property, not live transaction records.
 export const mockProperties: Property[] = [
   {
     id: 1,
@@ -69,10 +70,16 @@ export const mockProperties: Property[] = [
       { name: "San Jose", time: "55 min" }
     ],
     priceHistory: [
-      { date: "2023-11-15", price: 450000, event: "Listed for sale" },
-      { date: "2023-10-01", price: 465000, event: "Price change" },
-      { date: "2019-06-20", price: 395000, event: "Sold" },
-      { date: "2019-04-15", price: 400000, event: "Listed for sale" },
+      { date: "2026-10-16", price: 450000, event: "Price reduced" },
+      { date: "2026-08-21", price: 459000, event: "Price reduced" },
+      { date: "2026-07-09", price: 475000, event: "Listed for sale" },
+      { date: "2022-07-22", price: 480000, event: "Sold" },
+      { date: "2022-05-18", price: 495000, event: "Listed for sale" },
+      { date: "2021-01-15", price: 418000, event: "Sold" },
+      { date: "2020-10-09", price: 425000, event: "Price reduced" },
+      { date: "2020-08-20", price: 445000, event: "Listed for sale" },
+      { date: "2018-09-04", price: 478000, event: "Sold" },
+      { date: "2018-07-12", price: 485000, event: "Listed for sale" },
       { date: "2015-03-10", price: 350000, event: "Sold" }
     ],
     taxHistory: [
@@ -120,8 +127,11 @@ export const mockProperties: Property[] = [
       { name: "San Jose", time: "25 min" }
     ],
     priceHistory: [
-      { date: "2024-01-10", price: 750000, event: "Listed for sale" },
-      { date: "2023-11-05", price: 775000, event: "Listed for sale" },
+      { date: "2026-10-22", price: 750000, event: "Listed for sale" },
+      { date: "2020-10-30", price: 685000, event: "Sold" },
+      { date: "2020-09-11", price: 665000, event: "Listed for sale" },
+      { date: "2015-05-28", price: 610000, event: "Sold" },
+      { date: "2015-04-02", price: 595000, event: "Listed for sale" },
       { date: "2010-05-15", price: 550000, event: "Sold" },
       { date: "2010-02-20", price: 560000, event: "Listed for sale" }
     ],
@@ -170,8 +180,12 @@ export const mockProperties: Property[] = [
       { name: "West Palm Beach", time: "60 min" }
     ],
     priceHistory: [
-      { date: "2024-02-01", price: 1200000, event: "Listed for sale" },
-      { date: "2023-08-15", price: 1250000, event: "Listed for sale" },
+      { date: "2026-09-02", price: 1200000, event: "Listed for sale" },
+      { date: "2024-07-19", price: 1180000, event: "Sold" },
+      { date: "2024-04-05", price: 1295000, event: "Price reduced" },
+      { date: "2024-01-16", price: 1390000, event: "Listed for sale" },
+      { date: "2022-06-03", price: 1320000, event: "Sold" },
+      { date: "2022-03-18", price: 1375000, event: "Listed for sale" },
       { date: "2020-12-15", price: 950000, event: "Sold" },
       { date: "2020-01-10", price: 975000, event: "Listed for sale" }
     ],
@@ -220,10 +234,15 @@ export const mockProperties: Property[] = [
       { name: "Everett", time: "35 min" }
     ],
     priceHistory: [
-      { date: "2023-10-05", price: 280000, event: "Listed for sale" },
-      { date: "2023-09-01", price: 295000, event: "Listed for sale" },
-      { date: "2018-04-12", price: 210000, event: "Sold" },
-      { date: "2015-11-30", price: 185000, event: "Sold" }
+      { date: "2026-08-14", price: 280000, event: "Listed for sale" },
+      { date: "2023-05-26", price: 286000, event: "Sold" },
+      { date: "2023-04-06", price: 290000, event: "Listed for sale" },
+      { date: "2020-11-13", price: 272000, event: "Sold" },
+      { date: "2020-08-07", price: 285000, event: "Price reduced" },
+      { date: "2020-06-10", price: 299000, event: "Listed for sale" },
+      { date: "2018-04-12", price: 310000, event: "Sold" },
+      { date: "2018-02-22", price: 315000, event: "Listed for sale" },
+      { date: "2015-11-30", price: 235000, event: "Sold" }
     ],
     taxHistory: [
       { year: 2023, tax: 2800, assessment: 260000 },
@@ -270,8 +289,15 @@ export const mockProperties: Property[] = [
       { name: "Fort Collins", time: "65 min" }
     ],
     priceHistory: [
-      { date: "2024-03-01", price: 890000, event: "Listed for sale" },
-      { date: "2023-12-10", price: 920000, event: "Listed for sale" },
+      { date: "2026-10-09", price: 890000, event: "Price reduced" },
+      { date: "2026-08-07", price: 910000, event: "Listed for sale" },
+      { date: "2024-04-19", price: 865000, event: "Sold" },
+      { date: "2024-02-02", price: 879000, event: "Price reduced" },
+      { date: "2023-10-13", price: 925000, event: "Listed for sale" },
+      { date: "2022-06-24", price: 960000, event: "Sold" },
+      { date: "2022-04-08", price: 975000, event: "Listed for sale" },
+      { date: "2020-09-04", price: 758000, event: "Sold" },
+      { date: "2020-07-17", price: 749000, event: "Listed for sale" },
       { date: "2016-08-20", price: 620000, event: "Sold" },
       { date: "2016-06-01", price: 635000, event: "Listed for sale" }
     ],
@@ -320,8 +346,11 @@ export const mockProperties: Property[] = [
       { name: "Oak Park", time: "20 min" }
     ],
     priceHistory: [
-      { date: "2023-12-01", price: 550000, event: "Listed for sale" },
-      { date: "2023-10-15", price: 575000, event: "Listed for sale" },
+      { date: "2026-10-02", price: 550000, event: "Listed for sale" },
+      { date: "2023-05-12", price: 532000, event: "Sold" },
+      { date: "2023-03-24", price: 529000, event: "Listed for sale" },
+      { date: "2020-08-28", price: 480000, event: "Sold" },
+      { date: "2020-05-15", price: 489000, event: "Listed for sale" },
       { date: "2018-11-10", price: 495000, event: "Sold" },
       { date: "2018-09-05", price: 510000, event: "Listed for sale" }
     ],
@@ -370,8 +399,14 @@ export const mockProperties: Property[] = [
       { name: "Brookline", time: "15 min" }
     ],
     priceHistory: [
-      { date: "2024-01-20", price: 980000, event: "Listed for sale" },
-      { date: "2023-11-10", price: 1050000, event: "Listed for sale" },
+      { date: "2026-09-18", price: 980000, event: "Listed for sale" },
+      { date: "2017-06-02", price: 812000, event: "Sold" },
+      { date: "2017-04-07", price: 790000, event: "Listed for sale" },
+      { date: "2010-09-17", price: 525000, event: "Sold" },
+      { date: "2010-06-25", price: 540000, event: "Price reduced" },
+      { date: "2010-02-19", price: 575000, event: "Listed for sale" },
+      { date: "2006-08-04", price: 635000, event: "Sold" },
+      { date: "2006-05-12", price: 650000, event: "Listed for sale" },
       { date: "1995-06-30", price: 350000, event: "Sold" },
       { date: "1995-03-15", price: 375000, event: "Listed for sale" }
     ],
@@ -420,8 +455,14 @@ export const mockProperties: Property[] = [
       { name: "Atlanta", time: "3.5 hr" }
     ],
     priceHistory: [
-      { date: "2023-09-15", price: 1850000, event: "Listed for sale" },
-      { date: "2023-06-01", price: 1950000, event: "Listed for sale" },
+      { date: "2026-09-25", price: 1850000, event: "Price reduced" },
+      { date: "2026-06-12", price: 1895000, event: "Listed for sale" },
+      { date: "2024-02-16", price: 1860000, event: "Sold" },
+      { date: "2023-09-22", price: 1925000, event: "Price reduced" },
+      { date: "2023-05-05", price: 1995000, event: "Listed after restoration" },
+      { date: "2019-04-26", price: 1080000, event: "Sold" },
+      { date: "2019-01-11", price: 1095000, event: "Price reduced" },
+      { date: "2018-08-03", price: 1175000, event: "Listed for sale" },
       { date: "2015-02-28", price: 1200000, event: "Sold" },
       { date: "2014-10-10", price: 1250000, event: "Listed for sale" }
     ],
@@ -470,10 +511,15 @@ export const mockProperties: Property[] = [
       { name: "Santa Barbara", time: "60 min" }
     ],
     priceHistory: [
-      { date: "2024-04-01", price: 3200000, event: "Listed for sale" },
-      { date: "2023-11-15", price: 3400000, event: "Listed for sale" },
-      { date: "2021-01-15", price: 2800000, event: "Sold" },
-      { date: "2020-08-20", price: 2950000, event: "Listed for sale" }
+      { date: "2026-10-23", price: 3200000, event: "Price reduced" },
+      { date: "2026-06-26", price: 3300000, event: "Price reduced" },
+      { date: "2026-03-06", price: 3495000, event: "Relisted for sale" },
+      { date: "2025-09-19", price: 3750000, event: "Listing removed" },
+      { date: "2025-04-11", price: 3750000, event: "Price reduced" },
+      { date: "2024-10-04", price: 3950000, event: "Price reduced" },
+      { date: "2024-05-17", price: 4100000, event: "Listed for sale" },
+      { date: "2022-08-19", price: 3400000, event: "Sold" },
+      { date: "2022-03-11", price: 3650000, event: "Listed as new construction" }
     ],
     taxHistory: [
       { year: 2023, tax: 35000, assessment: 3000000 },
@@ -523,8 +569,14 @@ export const mockRentProperties: Property[] = [
       { name: "Berkeley", time: "30 min" }
     ],
     priceHistory: [
-      { date: "2024-01-15", price: 3500, event: "Listed for rent" },
-      { date: "2022-05-01", price: 3200, event: "Rented" }
+      { date: "2026-10-02", price: 3500, event: "Rent reduced" },
+      { date: "2026-08-21", price: 3650, event: "Listed for rent" },
+      { date: "2024-01-15", price: 3450, event: "Rented" },
+      { date: "2022-05-01", price: 3200, event: "Rented" },
+      { date: "2020-11-01", price: 2900, event: "Rented" },
+      { date: "2020-10-09", price: 2950, event: "Rent reduced" },
+      { date: "2020-08-14", price: 3250, event: "Listed for rent" },
+      { date: "2019-06-01", price: 3700, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -567,8 +619,12 @@ export const mockRentProperties: Property[] = [
       { name: "Menlo Park", time: "15 min" }
     ],
     priceHistory: [
-      { date: "2024-02-01", price: 5500, event: "Listed for rent" },
-      { date: "2021-08-15", price: 5000, event: "Rented" }
+      { date: "2026-09-11", price: 5500, event: "Listed for rent" },
+      { date: "2024-08-01", price: 5250, event: "Rented" },
+      { date: "2024-07-12", price: 5250, event: "Listed for rent" },
+      { date: "2022-08-01", price: 4950, event: "Rented" },
+      { date: "2020-08-15", price: 4500, event: "Rented" },
+      { date: "2018-07-01", price: 4200, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -611,8 +667,16 @@ export const mockRentProperties: Property[] = [
       { name: "Downtown Miami", time: "15 min" }
     ],
     priceHistory: [
-      { date: "2024-03-10", price: 8000, event: "Listed for rent" },
-      { date: "2023-01-20", price: 7500, event: "Rented" }
+      { date: "2026-10-09", price: 8000, event: "Listed for rent" },
+      { date: "2025-07-01", price: 8300, event: "Rented" },
+      { date: "2025-06-06", price: 8500, event: "Rent reduced" },
+      { date: "2025-04-18", price: 9200, event: "Listed for rent" },
+      { date: "2023-03-01", price: 8500, event: "Rented" },
+      { date: "2022-02-01", price: 7200, event: "Rented" },
+      { date: "2022-01-14", price: 7200, event: "Listed for rent" },
+      { date: "2020-08-01", price: 5300, event: "Rented" },
+      { date: "2020-07-10", price: 5500, event: "Listed for rent" },
+      { date: "2019-02-01", price: 5800, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -655,8 +719,12 @@ export const mockRentProperties: Property[] = [
       { name: "Vancouver", time: "25 min" }
     ],
     priceHistory: [
-      { date: "2024-02-28", price: 2200, event: "Listed for rent" },
-      { date: "2022-09-01", price: 2000, event: "Rented" }
+      { date: "2026-09-18", price: 2200, event: "Listed for rent" },
+      { date: "2024-09-01", price: 2100, event: "Rented" },
+      { date: "2024-08-02", price: 2200, event: "Listed for rent" },
+      { date: "2022-09-01", price: 1900, event: "Lease renewed" },
+      { date: "2020-09-01", price: 1750, event: "Lease renewed" },
+      { date: "2018-09-01", price: 1650, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -699,8 +767,13 @@ export const mockRentProperties: Property[] = [
       { name: "Redmond", time: "35 min" }
     ],
     priceHistory: [
-      { date: "2024-01-05", price: 3800, event: "Listed for rent" },
-      { date: "2023-02-15", price: 3600, event: "Rented" }
+      { date: "2026-10-16", price: 3800, event: "Rent reduced" },
+      { date: "2026-08-28", price: 3995, event: "Listed for rent" },
+      { date: "2024-03-01", price: 3950, event: "Lease renewed" },
+      { date: "2023-02-15", price: 3600, event: "Rented" },
+      { date: "2021-10-01", price: 3100, event: "Lease renewed" },
+      { date: "2020-10-01", price: 3000, event: "Lease renewed" },
+      { date: "2019-10-01", price: 3300, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -743,8 +816,12 @@ export const mockRentProperties: Property[] = [
       { name: "Brookline", time: "15 min" }
     ],
     priceHistory: [
-      { date: "2024-03-01", price: 4200, event: "Listed for rent" },
-      { date: "2022-06-01", price: 3900, event: "Rented" }
+      { date: "2026-09-04", price: 4200, event: "Listed for rent" },
+      { date: "2024-06-01", price: 4000, event: "Lease renewed" },
+      { date: "2022-06-01", price: 3750, event: "Rented" },
+      { date: "2021-02-01", price: 3200, event: "Rented" },
+      { date: "2019-06-01", price: 3450, event: "Rented" },
+      { date: "2016-06-01", price: 3000, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -787,8 +864,13 @@ export const mockRentProperties: Property[] = [
       { name: "Santa Monica", time: "30 min" }
     ],
     priceHistory: [
-      { date: "2024-01-20", price: 2800, event: "Listed for rent" },
-      { date: "2023-03-15", price: 2600, event: "Rented" }
+      { date: "2026-09-11", price: 2800, event: "Rent reduced" },
+      { date: "2026-07-10", price: 2950, event: "Listed for rent" },
+      { date: "2024-08-01", price: 2800, event: "Lease renewed" },
+      { date: "2022-08-01", price: 2750, event: "Rented" },
+      { date: "2022-06-17", price: 2900, event: "Listed for rent" },
+      { date: "2021-03-01", price: 2300, event: "Lease renewed" },
+      { date: "2019-03-01", price: 2450, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -831,8 +913,13 @@ export const mockRentProperties: Property[] = [
       { name: "Aurora", time: "15 min" }
     ],
     priceHistory: [
-      { date: "2024-02-10", price: 3200, event: "Listed for rent" },
-      { date: "2021-07-01", price: 2900, event: "Rented" }
+      { date: "2026-10-02", price: 3200, event: "Listed for rent" },
+      { date: "2025-07-01", price: 3100, event: "Lease renewed" },
+      { date: "2023-07-01", price: 2950, event: "Rented" },
+      { date: "2023-06-16", price: 3000, event: "Listed for rent" },
+      { date: "2021-07-01", price: 2650, event: "Rented" },
+      { date: "2019-07-01", price: 2450, event: "Lease renewed" },
+      { date: "2017-07-01", price: 2250, event: "Rented" }
     ],
     taxHistory: [],
     schools: [
@@ -875,8 +962,13 @@ export const mockRentProperties: Property[] = [
       { name: "Reno", time: "45 min" }
     ],
     priceHistory: [
-      { date: "2024-01-01", price: 2500, event: "Listed for rent" },
-      { date: "2022-11-15", price: 2300, event: "Rented" }
+      { date: "2026-09-25", price: 2500, event: "Rent reduced" },
+      { date: "2026-08-14", price: 2650, event: "Listed for rent" },
+      { date: "2024-11-01", price: 2400, event: "Lease renewed" },
+      { date: "2022-06-01", price: 2600, event: "Rented" },
+      { date: "2022-04-15", price: 2750, event: "Listed for rent" },
+      { date: "2020-09-01", price: 2000, event: "Rented" },
+      { date: "2018-11-01", price: 1700, event: "Rented" }
     ],
     taxHistory: [],
     schools: [

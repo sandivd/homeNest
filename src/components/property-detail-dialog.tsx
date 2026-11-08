@@ -262,7 +262,7 @@ export default function PropertyDetailDialog({
                   </div>
                   <div className="history-chart-card">
                     <div className="history-chart-topline">
-                      <span>{isRental ? "Monthly rent over time" : "Sale price over time"}</span>
+                      <span>{isRental ? "Monthly rent over time" : "Asking prices & recorded sales"}</span>
                       <strong>{money.format(home.price)}</strong>
                     </div>
                     <svg className="price-chart" viewBox="0 0 440 210" role="img" aria-label={`Price history for ${home.address}`}>
@@ -277,7 +277,7 @@ export default function PropertyDetailDialog({
                       <path d={chartLine} className="chart-line" />
                       {chartPoints.map((point) => (
                         <circle key={point.id} cx={point.x} cy={point.y} r="4.5" className="chart-dot">
-                          <title>{prettyDate(point.eventDate)}: {money.format(point.price)}</title>
+                          <title>{prettyDate(point.eventDate)} · {point.event}: {money.format(point.price)}</title>
                         </circle>
                       ))}
                     </svg>
@@ -296,7 +296,7 @@ export default function PropertyDetailDialog({
                       </div>
                     ))}
                   </div>
-                  <p className="tiny-disclaimer">Price history is provided for context and may not include every transaction.</p>
+                  <p className="tiny-disclaimer">Illustrative sample history, not live transaction data. Lines connect recorded events; prices between events are unknown.</p>
                 </section>
 
                 {home.taxHistory.length > 0 && <section className="detail-section"><h2>Property tax history</h2><table className="tax-table"><thead><tr><th>Year</th><th>Annual tax</th><th>Assessment</th></tr></thead><tbody>{home.taxHistory.map(entry => <tr key={entry.year}><td>{entry.year}</td><td>{money.format(entry.tax)}</td><td>{money.format(entry.assessment)}</td></tr>)}</tbody></table></section>}
