@@ -1,0 +1,70 @@
+/* Shared dark palette. Component fallbacks preserve the existing light theme. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e5eee8;
+  --ink-soft: #c1cfc6;
+  --muted: #a8b9ae;
+  --forest: #acd3b9;
+  --forest-deep: #bfe2ca;
+  --sage: #304c3d;
+  --sage-light: #1c3026;
+  --cream: #1b2d24;
+  --paper: #14251e;
+  --white: #20342a;
+  --sand: #3a493e;
+  --warm: #d1b18a;
+  --warm-light: #493c2c;
+  --rose: #f0a498;
+  --line: #30443a;
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--muted);
+  --text-warm: var(--warm);
+  --text-danger: var(--rose);
+  --surface-raised: var(--white);
+  --surface-soft: var(--cream);
+  --separator: var(--line);
+  --control-border: #5d7868;
+  --action-bg: #32624c;
+  --action-hover: #3d7359;
+  --icon-color: #acd3b9;
+  --chart-color: #93c4a7;
+  --scroll-thumb: #506b5a;
+  --hero-background: radial-gradient(ellipse at 76% 24%, #30463266, transparent 48%), #16291f;
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+}
+
+[data-theme="dark"] ::selection { color: var(--ink); background: #3b5c49; }
+[data-theme="dark"] :is(button, a, input, select, textarea):focus-visible { outline-color: #a1d6b3; }
+[data-theme="dark"] .card-specs .icon,
+[data-theme="dark"] .detail-stats .icon,
+[data-theme="dark"] .highlight-grid .icon,
+[data-theme="dark"] .tour-helper .icon { color: var(--icon-color); }
+[data-theme="dark"] .location-search-field input,
+[data-theme="dark"] .sort-select-wrap select { color: var(--ink); }
+[data-theme="dark"] .facts-grid { background: transparent; }
+[data-theme="dark"] .school-score { color: var(--ink); }
+[data-theme="dark"] .mortgage-card { background: var(--surface-soft); }
+[data-theme="dark"] .detail-safe-note { background: var(--surface-soft); }
+[data-theme="dark"] .tour-form input::placeholder,
+[data-theme="dark"] .tour-form textarea::placeholder { color: var(--muted); }
+[data-theme="dark"] .calculator-control input[type="range"] { accent-color: var(--chart-color); }
+[data-theme="dark"] .location-price.selected { background: #745438; color: white; }
+
+/* Bring the original account and mortgage components into the same palette. */
+[data-theme="dark"] :is(.bg-white, .bg-gray-50, .bg-gray-100, .dark\:bg-gray-800, .dark\:bg-gray-900) { background-color: var(--paper); }
+[data-theme="dark"] :is(.bg-gray-200, .dark\:bg-gray-700, .dark\:bg-gray-700\/50) { background-color: var(--surface-raised); }
+[data-theme="dark"] :is(.text-gray-900, .text-gray-800, .text-gray-700) { color: var(--ink); }
+[data-theme="dark"] :is(.text-gray-600, .text-gray-500, .text-gray-400) { color: var(--ink-soft); }
+[data-theme="dark"] :is(.border-gray-100, .border-gray-200, .border-gray-300, .dark\:border-gray-600, .dark\:border-gray-700, .dark\:border-gray-800) { border-color: var(--line); }
+[data-theme="dark"] :is(.bg-blue-100, .bg-purple-100, .bg-green-100) { background-color: var(--sage); }
+[data-theme="dark"] :is(.text-blue-600, .text-purple-600, .text-green-600, .text-green-800) { color: var(--forest); }
+[data-theme="dark"] :is(.dark\:bg-blue-900\/30, .dark\:bg-purple-900\/30, .dark\:bg-green-900\/30) { background-color: var(--sage); }
+[data-theme="dark"] input:disabled { color: var(--ink-soft); background-color: var(--surface-soft); }
+[data-theme="dark"] .highlight-grid i { background: var(--surface-raised); color: var(--icon-color); }
+[data-theme="dark"] .toggle-filter i { background: #516b5b; }
+[data-theme="dark"] .toggle-filter i::after { background: var(--ink); }
+[data-theme="dark"] .toggle-filter input:checked + i { background: var(--action-bg); }
+[data-theme="dark"] .main-nav .nav-active::after { background: var(--forest); }

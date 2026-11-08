@@ -6,6 +6,7 @@ import { PremiumHeader } from './components/premium-header';
 import { getHomes } from './data/listings';
 import './App.css';
 import './premium.css';
+import './theme.css';
 const buyHomes = getHomes('buy');
 const rentHomes = getHomes('rent');
 
