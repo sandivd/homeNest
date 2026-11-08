@@ -34,6 +34,16 @@ HomeNest is a comprehensive, modern real estate application built with React, Ty
 -   **Dark Mode Support:** Polished UI that looks great in both light and dark themes.
 -   **Animations:** Smooth transitions and entrance animations using Framer Motion.
 
+## Refreshed HomeNest experience
+
+The search and property details UI adapts the supplied premium website's cream, forest, and serif design to HomeNest. Both Buy and Rent retain the original sample listings. Features include location search, price/bedroom/property filters, price sorting, persistent saved homes, shareable property links, dated price/rent charts, tax history, school and interior details, and a mortgage estimate calculator for homes for sale.
+
+Favorites and tour plans are stored in this browser's localStorage. Tour plans are **not sent to an agent**; no booking or email service is connected. The location view groups homes by city and is labeled as a schematic rather than a geographic map. Monthly payment estimates assume a 30-year loan, 20% down, 6.5% interest, recorded sample tax, and 0.35% annual insurance; HOA information is unavailable. Listing and rate data are illustrative, not live.
+
+Photo URLs remain unchanged. If a photo host is unavailable, a labeled local illustration appears instead. Photo access needs `images.pexels.com`, `images.unsplash.com`, and `plus.unsplash.com`.
+
+Run `npm run build`, `npx tsc --noEmit`, and `CI=true npm test -- --watchAll=false --runInBand` to validate. The custom Jest resolver supports React Router 7's public export paths with CRA's Jest 27 runner.
+
 ## 🛠️ Tech Stack
 
 -   **React 18:** Component-based UI library.

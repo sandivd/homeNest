@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import RealEstateListings, { NavBar, AuthPage, ProfilePage, MortgagePage, User } from './zillowWebsiteOpus4';
+import { HashRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { AuthPage, ProfilePage, MortgagePage, User } from './zillowWebsiteOpus4';
+import HomeSearchExperience from './components/home-search-experience';
+import { PremiumHeader } from './components/premium-header';
+import { getHomes } from './data/listings';
 import './App.css';
-import './index.css';
+import './premium.css';
+const buyHomes = getHomes('buy');
+const rentHomes = getHomes('rent');
 
 function AppContent() {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const [user, setUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  const headerProps = { user, theme, toggleTheme: () => setTheme(theme === "light" ? "dark" : "light") };
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -26,9 +33,7 @@ function AppContent() {
     }
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }, [location.pathname]);
 
   const hashPassword = async (password: string) => {
     const msgBuffer = new TextEncoder().encode(password);
@@ -73,13 +78,13 @@ function AppContent() {
   };
 
   return (
-    <div className={`App ${theme}`}>
-      <NavBar user={user} theme={theme} toggleTheme={toggleTheme} />
+    <div className={`App ${theme}`} data-theme={theme}>
+      {!["/buy", "/rent", "/"].includes(location.pathname) && <PremiumHeader {...headerProps} />}
       <Routes>
         <Route path="/" element={<Navigate to="/buy" replace />} />
-        <Route path="/buy" element={<RealEstateListings listingType="buy" />} />
-        <Route path="/rent" element={<RealEstateListings listingType="rent" />} />
-        <Route path="/mortgage" element={<MortgagePage />} />
+        <Route path="/buy" element={<HomeSearchExperience key="buy" homes={buyHomes} {...headerProps} />} />
+        <Route path="/rent" element={<HomeSearchExperience key="rent" homes={rentHomes} {...headerProps} />} />
+        <Route path="/mortgage" element={<div className="legacy-page"><MortgagePage /></div>} />
         <Route
           path="/signin"
           element={
